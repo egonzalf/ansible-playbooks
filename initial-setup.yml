@@ -1,0 +1,11 @@
+# ansible-playbook -i "192.168.122.252," -k -K initial-setup.yml
+# the '-i' is to override inventory and use unkown host
+- hosts: 192.168.122.252
+  remote_user: gonzalea
+  become: yes
+  become_user: root
+
+  tasks:
+    - include_tasks: tasks/ecrc-modules.yml
+    - include_tasks: "tasks/{{ ansible_distribution }}-install-buildenvironment.yml"
+

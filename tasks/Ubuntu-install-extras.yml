@@ -1,0 +1,11 @@
+    - name: Extra packages
+      apt: name={{item}} state=latest update_cache=no
+      with_items:
+        - zip
+        - wget
+        - rsync
+        - curl
+        - tree
+        - screen
+        - graphviz
+        - nmap

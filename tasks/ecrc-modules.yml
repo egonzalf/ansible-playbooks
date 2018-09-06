@@ -1,0 +1,17 @@
+#- name: echo
+#  shell: echo hello
+- include_tasks: "{{ ansible_distribution }}-install-autofs.yml"
+- name: Copying auto.master
+  copy:
+    src: auto.master
+    dest: /etc/
+- name: Copying auto.ecrcmodules
+  copy:
+    src: auto.ecrcmodules
+    dest: /etc/
+- name: Copying auto.wsintelapps
+  copy:
+    src: auto.wsintelapps
+    dest: /etc/
+- name: restart AUTOFS service
+  systemd: name=autofs state=restarted

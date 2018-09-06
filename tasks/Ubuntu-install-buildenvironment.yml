@@ -1,0 +1,17 @@
+    - name: Ensure Build environment is installed
+      apt: name={{item}} state=latest update_cache=no
+      with_items:
+        - bison
+        - build-essential
+        - cmake
+        - doxygen
+        - environment-modules
+        - flex
+        - gfortran
+        - libhwloc-dev
+        - liblzma-dev
+        - libnuma-dev
+        - libtool-bin
+        - libxml2-dev
+        - numactl
+        - valgrind
