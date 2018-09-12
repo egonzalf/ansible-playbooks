@@ -1,4 +1,4 @@
 - name: Ensure NFS is installed
-  apt: name=nfs-common state=latest update_cache=no
+  apt: name=nfs-common state=latest update_cache=yes
 - name: Ensure AutoFS is installed
   apt: name=autofs state=latest update_cache=no
