@@ -1,6 +1,6 @@
-# ansible-playbook -i "192.168.122.252," -k -K initial-setup.yml
+# ansible-playbook -i myhosts -k -K initial-setup.yml
 # the '-i' is to override inventory and use unkown host
-- hosts: 192.168.122.252
+- hosts: new
   remote_user: gonzalea
   become: yes
   become_user: root
