@@ -1,6 +1,6 @@
 #- name: echo
 #  shell: echo hello
-- include_tasks: "{{ ansible_distribution }}-install-autofs.yml"
+- include_tasks: "{{ ansible_distribution }}/install-autofs.yml"
 - name: Copying auto.master
   copy:
     src: auto.master

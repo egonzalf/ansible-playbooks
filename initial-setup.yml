@@ -7,5 +7,5 @@
 
   tasks:
     - include_tasks: tasks/ecrc-modules.yml
-    - include_tasks: "tasks/{{ ansible_distribution }}-install-buildenvironment.yml"
+    - include_tasks: "tasks/{{ ansible_distribution }}/install-buildenvironment.yml"
 
