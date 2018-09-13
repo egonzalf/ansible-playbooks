@@ -1,0 +1,10 @@
+- name: Install Jenkins Repo
+  yum_repository:
+    baseurl: http://pkg.jenkins.io/redhat-stable
+    state: present
+    name: jenkins
+    gpgcheck: yes
+- name: Install Java if necessary
+  yum: name=java-1.8.0-openjdk-headless update_cache=yes state=latest
+- name: Install Jenkins
+  yum: name=jenkins update_cache=yes state=latest allow_unauthenticated=yes

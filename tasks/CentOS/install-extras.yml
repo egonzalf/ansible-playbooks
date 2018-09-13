@@ -1,0 +1,13 @@
+    - name: Extra packages
+      yum: name={{item}} state=latest update_cache=no
+      with_items:
+        - curl
+        - graphviz
+        - htop
+        - nmap
+        - rsync
+        - screen
+        - sysstat
+        - tree
+        - wget
+        - zip

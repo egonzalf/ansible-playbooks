@@ -1,0 +1,4 @@
+- name: Ensure NFS is installed
+  yum: name=nfs-utils state=latest update_cache=yes
+- name: Ensure AutoFS is installed
+  yum: name=autofs state=latest update_cache=no

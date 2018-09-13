@@ -1,0 +1,13 @@
+    - name: Ensure Build environment is installed
+      yum: name={{item}} state=latest update_cache=no
+      with_items:
+        - "@development"
+        - cmake
+        - environment-modules
+        - hwloc-devel
+        - xz-devel
+        - numactl-devel
+        - libtool
+        - libxml2-devel
+        - numactl
+        - valgrind
