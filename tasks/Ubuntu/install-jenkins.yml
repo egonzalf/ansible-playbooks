@@ -1,0 +1,9 @@
+- name: Install Jenkins Repo
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    state: present
+    filename: jenkins
+- name: Install Java if necessary
+  apt: name=openjdk-8-jre-headless update_cache=yes state=latest
+- name: Install Jenkins
+  apt: name=jenkins update_cache=yes state=latest allow_unauthenticated=yes
