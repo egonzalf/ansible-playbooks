@@ -11,6 +11,9 @@ shihab
 thana
 vulture
 
+[ecrc:vars]
+ansible_user=gonzalea
+
 [ubuntu]
 almaha
 bashiq
@@ -22,10 +25,13 @@ raed
 shihab
 vulture
 
+[ubuntu:vars]
+ansible_user=gonzalea
+
 [centos]
-condor
-thana
-albatross
+condor ansible_user=gonzalea
+thana ansible_user=gonzalea
+albatross ansible_user=gonzalea
 
 [intel:children]
 sandybridge
@@ -36,30 +42,30 @@ knl
 skylake
 
 [sandybridge]
-almaha
-bashiq
-oqab
-raed
+almaha ansible_user=gonzalea
+bashiq ansible_user=gonzalea
+oqab ansible_user=gonzalea
+raed ansible_user=gonzalea
 
 [haswell]
-shihab
+shihab ansible_user=gonzalea
 
 [broadwell]
-jasmine
+jasmine ansible_user=gonzalea
 
 [ivybridge]
-buraq
+buraq ansible_user=gonzalea
 
 [power8]
-thana
+thana ansible_user=gonzalea
 
 [knl]
-albatross
-condor
+albatross ansible_user=gonzalea
+condor ansible_user=gonzalea
 
 [skylake]
-flamingo
-vulture
+flamingo ansible_user=gonzalea
+vulture ansible_user=gonzalea
 
 [ostack-ubuntu]
 10.254.145.75
@@ -71,8 +77,14 @@ vulture
 10.254.145.107
 10.254.145.109
 
+[ostack-ubuntu:vars]
+ansible_user=ubuntu
+
 [ostack-centos]
 10.254.145.62
+
+[ostack-centos:vars]
+ansible_user=centos
 
 [openstack:children]
 ostack-ubuntu
@@ -84,25 +96,14 @@ ostack-centos
 10.254.145.80
 10.254.145.72
 
+[ostack-jenkins:vars]
+ansible_user=ubuntu
+
 [dummy]
-192.168.122.94
-192.168.122.46
+192.168.122.94 ansible_user=ecrc
+192.168.122.46 ansible_user=ecrc
 
 
-[hdr3.7]
-almaha
-bashiq
-oqab
-raed
-
-[hdr3.11]
-jasmine
-thana
-
-[hdr:children]
-hdr3.7
-hdr3.11
-
-[ithdr]
-vulture
-
+[demo]
+10.254.145.187
+10.254.145.188
