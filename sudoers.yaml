@@ -1,0 +1,21 @@
+- hosts: ecrc
+  become: true
+  tasks:
+    - name: Allow users to change CPU performance settings (HT, frequency)
+      template:
+        src: sudoers.performance.template
+        dest: /etc/sudoers.d/performance
+        validate: 'visudo -cf %s'
+        mode: 0440
+    - name: Copy scripts hyperthreading.sh
+      copy:
+        src: hyperthreading.sh
+        dest: /opt/
+        backup: true
+        mode: 0755
+    - name: Copy scripts cpu-frequency.sh
+      copy:
+        src: cpu-frequency.sh
+        dest: /opt/
+        backup: true
+        mode: 0755
