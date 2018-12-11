@@ -1,0 +1,52 @@
+127.0.0.1	localhost
+127.0.1.1	{{ ansible_hostname }}
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+
+
+#stelletto
+10.68.209.5     oqab
+10.68.209.6     raed
+
+#c5hdn
+10.68.209.7     almaha
+10.68.209.8     bashiq
+
+# SCC-DC 3.11
+10.68.26.3      jasmine
+10.68.26.5      thana
+
+# hatem's office
+10.68.59.58     buraq
+10.68.59.54     shihab
+
+# Open Area 0203-WS09
+10.68.59.125	flamingo
+10.68.58.17     condor
+10.68.58.62     albatross
+
+# IT - Datacenter
+10.67.24.11     vulture
+
+##
+10.66.89.208    p100
+10.254.5.25     lthnoorapps lthnoorapps.kaust.edu.sa
+10.68.58.49     kw14944 collectd-master
+10.254.99.65    ecrcwiki lthecrcwiki.kaust.edu.sa ecrcwiki.kaust.edu.sa
+
+# OpenStack
+10.254.145.75   jenkins-gpu-1
+10.254.145.83   docker-test docker-host
+10.254.145.47   jenkins-node-3
+10.254.145.80   jenkins-node-2
+10.254.145.72   jenkins-node-1
+10.254.145.103  jupyterhub
+10.254.145.107  jenkins-master-node
+10.254.145.109  docker-registry docker-reg
+

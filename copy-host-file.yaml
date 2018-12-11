@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Copy template hosts file
+    template: src="etc.hosts.template" dest="/etc/hosts" 
+  
