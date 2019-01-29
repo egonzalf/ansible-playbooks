@@ -3,7 +3,7 @@
 - include_tasks: "{{ ansible_distribution }}/install-buildenvironment.yml"
 - name: Copying modules-it.sh
   copy:
-    src: /data/ecrc-modules/v2/modules/deploy-scripts/modules-it.sh
+    src: /data/ecrc-modules/v2/modules/deploy-scripts/modules-it-sw.sh
     dest: /etc/profile.d
 - name: Copying modules-ecrc.sh
   copy:
