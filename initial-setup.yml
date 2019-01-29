@@ -1,6 +1,7 @@
 # ansible-playbook -i myhosts -k -K initial-setup.yml
+# ansible-playbook -i "1.2.3.4," -k -K initial-setup.yml
 # the '-i' is to override inventory and use unkown host
-- hosts: new
+- hosts: all
   remote_user: gonzalea
   become: yes
   become_user: root
@@ -8,4 +9,5 @@
   tasks:
     - include_tasks: tasks/ecrc-modules.yml
     - include_tasks: "tasks/{{ ansible_distribution }}/install-buildenvironment.yml"
+
 
