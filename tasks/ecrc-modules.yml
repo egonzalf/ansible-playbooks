@@ -5,14 +5,22 @@
   copy:
     src: auto.master
     dest: /etc/
-- name: Copying auto.ecrcmodules
+- name: Copying opt-ecrc.mount
   copy:
-    src: auto.ecrcmodules
-    dest: /etc/
-- name: Copying auto.wsintelapps
+    src: auto-mount/opt-ecrc.mount
+    dest: /etc/auto.master.d/
+- name: Copying opt-ecrc.autofs
   copy:
-    src: auto.wsintelapps
-    dest: /etc/
+    src: auto-mount/opt-ecrc.autofs
+    dest: /etc/auto.master.d/
+- name: Copying sw.mount
+  copy:
+    src: auto-mount/sw.mount
+    dest: /etc/auto.master.d/
+- name: Copying sw.autofs
+  copy:
+    src: auto-mount/sw.autofs
+    dest: /etc/auto.master.d/
 - name: restart AUTOFS service
   systemd: name=autofs state=restarted
 - include_tasks: "copy-envmodules-scripts.yml"

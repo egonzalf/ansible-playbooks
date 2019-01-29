@@ -27,6 +27,6 @@
 #
 +auto.master
 
-/-   /etc/auto.wsintelapps --timeout=300 --nobrowse --nosuid
-/-   /etc/auto.ecrcmodules --timeout=300 --nobrowse --nosuid
+#/-   /etc/auto.wsintelapps --timeout=300 --nobrowse --nosuid
+#/-   /etc/auto.ecrcmodules --timeout=300 --nobrowse --nosuid
 
