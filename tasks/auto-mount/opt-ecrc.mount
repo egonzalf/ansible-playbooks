@@ -1,0 +1,1 @@
+/opt/ecrc  -fstype=nfs,ro,_netdev,proto=tcp,nfsvers=3,wsize=32768,rsize=32768,intr kw14944.kaust.edu.sa:/data/ecrc-modules/v2

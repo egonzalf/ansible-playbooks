@@ -1,0 +1,1 @@
+/sw  -fstype=nfs,rw,_netdev,nfsvers=3,wsize=1048576,rsize=1048576,intr,soft,async,mountport=32767 lthdevapps.kaust.edu.sa:/sw
