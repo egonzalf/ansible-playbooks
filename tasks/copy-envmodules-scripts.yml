@@ -1,7 +1,7 @@
 #- name: echo
 #  shell: echo hello
 - include_tasks: "{{ ansible_distribution }}/install-buildenvironment.yml"
-- name: Copying modules-it.sh
+- name: Copying modules-it-sw.sh
   copy:
     src: /data/ecrc-modules/v2/modules/deploy-scripts/modules-it-sw.sh
     dest: /etc/profile.d

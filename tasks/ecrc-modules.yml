@@ -13,6 +13,14 @@
   copy:
     src: auto-mount/opt-ecrc.autofs
     dest: /etc/auto.master.d/
+- name: Copying opt-share.mount
+  copy:
+    src: auto-mount/opt-share.mount
+    dest: /etc/auto.master.d/
+- name: Copying opt-share.autofs
+  copy:
+    src: auto-mount/opt-share.autofs
+    dest: /etc/auto.master.d/
 - name: Copying sw.mount
   copy:
     src: auto-mount/sw.mount
