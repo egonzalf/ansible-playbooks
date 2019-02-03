@@ -1,0 +1,23 @@
+---
+# tasks file for devel
+- name: Ensure Build environment is installed
+  apt:
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+    name:
+      - bison
+      - build-essential
+      - cmake
+      - doxygen
+      - environment-modules
+      - flex
+      - gfortran
+      - libcurl4-openssl-dev
+      - libhwloc-dev
+      - liblzma-dev
+      - libnuma-dev
+      - libtool-bin
+      - libxml2-dev
+      - numactl
+      - valgrind
