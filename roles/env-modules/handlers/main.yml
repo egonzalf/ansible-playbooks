@@ -1,2 +1,7 @@
 ---
-# handlers file for env-modules
+- name: Restart and enable service autofs
+  systemd:
+    state: restarted
+    enabled: true
+    name: autofs
+  listen: "restart autofs"
