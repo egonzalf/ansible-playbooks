@@ -1,11 +1,9 @@
 [ecrc]
 almaha
-bashiq
 buraq
 condor
 flamingo
 jasmine
-oqab
 raed
 shihab
 thana
@@ -16,11 +14,9 @@ ansible_user=gonzalea
 
 [ubuntu]
 almaha
-bashiq
 buraq
 flamingo
 jasmine
-oqab
 raed
 shihab
 vulture
@@ -43,8 +39,6 @@ skylake
 
 [sandybridge]
 almaha ansible_user=gonzalea
-bashiq ansible_user=gonzalea
-oqab ansible_user=gonzalea
 raed ansible_user=gonzalea
 
 [haswell]
