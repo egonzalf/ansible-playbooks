@@ -9,30 +9,19 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 
-
-#stelletto
-10.68.209.5     oqab
-10.68.209.6     raed
-
-#c5hdn
-10.68.209.7     almaha
-10.68.209.8     bashiq
-
-# SCC-DC 3.11
-10.68.26.3      jasmine
-10.68.26.5      thana
-
-# hatem's office
-10.68.59.58     buraq
-10.68.59.54     shihab
-
 # Open Area 0203-WS09
 10.68.59.125	flamingo
 10.68.58.17     condor
 10.68.58.62     albatross
+10.68.59.58     buraq
+10.68.59.54     shihab
 
 # IT - Datacenter
 10.67.24.11     vulture
+10.67.24.12     jasmine
+10.67.24.13     thana
+10.67.24.14     almaha
+10.67.24.15     raed
 
 ##
 10.66.89.208    p100
