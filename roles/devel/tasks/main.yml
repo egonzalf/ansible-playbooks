@@ -21,3 +21,24 @@
       - libxml2-dev
       - numactl
       - valgrind
+  when: (ansible_facts['distribution'] == "Ubuntu")
+- name: Ensure Build environment is installed
+  yum:
+    state: present
+    update_cache: yes
+    name:
+      - "@Development Tools"
+      - bison
+      - cmake
+      - doxygen
+      - environment-modules
+      - flex
+      - hwloc-devel
+      - libcurl-devel
+      - libtool
+      - libxml2-devel
+      - numactl-devel
+      - openssl-devel
+      - valgrind
+      - xz-devel
+  when: (ansible_facts['distribution'] == "CentOS")
