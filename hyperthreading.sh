@@ -7,6 +7,8 @@ if [[ $EUID -ne 0 ]]; then
     exit
 fi
 
+_REALUSER_=$(logname)
+
 #set -x
 
 nsockets=`grep "^physical id" /proc/cpuinfo | sort | uniq | wc -l`
@@ -43,4 +45,6 @@ case $param in
         ;;
 esac
 
+
+wall "****** Attention: user '${_REALUSER_}' has ${param}d hyperthreading ******"
 
