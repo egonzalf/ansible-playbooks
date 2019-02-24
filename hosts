@@ -70,6 +70,8 @@ vulture ansible_user=gonzalea
 10.254.145.103
 10.254.145.107
 10.254.145.109
+10.254.145.187
+10.254.145.188
 
 [ostack-ubuntu:vars]
 ansible_user=ubuntu
