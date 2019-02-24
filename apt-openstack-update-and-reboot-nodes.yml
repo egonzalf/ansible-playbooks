@@ -1,0 +1,15 @@
+---
+- hosts: ostack-ubuntu
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Ensure Apt Cache is up to date
+      apt: update_cache=yes cache_valid_time=3600
+    - name: APT autoremove
+      apt: autoremove=yes
+    - name: Update
+      apt: upgrade=safe
+    - name: Reboot
+      reboot: 
