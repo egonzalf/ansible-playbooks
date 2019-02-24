@@ -13,7 +13,7 @@
 - name: Ensure NFS, AutoFS, and Environment modules are installed
   yum:
     name:
-      - nfs-common
+      - nfs-utils
       - autofs
       - environment-modules
     state: present
