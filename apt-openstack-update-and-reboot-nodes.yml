@@ -1,15 +1,21 @@
 ---
-- hosts: ostack-ubuntu
+- hosts: openstack
   remote_user: ubuntu
   become: yes
   become_user: root
 
   tasks:
-    - name: Ensure Apt Cache is up to date
-      apt: update_cache=yes cache_valid_time=3600
     - name: APT autoremove
       apt: autoremove=yes
-    - name: Update
-      apt: upgrade=safe
+      when: (ansible_facts['distribution'] == "Ubuntu")
+    - name: APT safe upgrade
+      apt: update_cache=yes cache_valid_time=3600 upgrade=safe
+      when: (ansible_facts['distribution'] == "Ubuntu")
+    - name: YUM autoremove
+      yum: autoremove=yes
+      when: (ansible_facts['distribution'] == "CentOS")
+    - name: YUM upgrade
+      yum: update_cache=yes name='*' state=latest
+      when: (ansible_facts['distribution'] == "CentOS")
     - name: Reboot
-      reboot: 
+      reboot:
