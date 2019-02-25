@@ -1,0 +1,13 @@
+---
+# tasks file for jenkins-node
+- name: Creating user "Jenkins"
+  user: name=jenkins create_home=yes home=/var/lib/jenkins system=yes shell=/bin/bash
+- name: Authorize Jenkins master SSH key
+  authorized_key: user=jenkins key="{{ lookup('file','files/id_jenkins.pub') }}" state=present
+- name: Install Java if necessary
+  apt: name=openjdk-8-jre-headless update_cache=yes cache_valid_time=3600 state=latest
+- name: adding existing user 'jenkins' to group 'docker'
+  user:
+      name: jenkins
+      groups: docker
+      append: yes
