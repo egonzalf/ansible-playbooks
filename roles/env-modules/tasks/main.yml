@@ -5,6 +5,7 @@
     name:
       - nfs-common
       - autofs
+      - tcl
       - environment-modules
     state: present
     update_cache: yes
