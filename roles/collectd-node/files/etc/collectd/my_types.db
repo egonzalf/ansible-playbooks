@@ -1,0 +1,2 @@
+# mine
+gpu_utilization         gpu:GAUGE:0:100.1, memory:GAUGE:0:100.1, encoder:GAUGE:0:100.1, decoder:GAUGE:0:100.1

@@ -1,0 +1,45 @@
+---
+# tasks file for collectd-node
+- name: Install collectd
+  apt:
+    name:
+        - rrdtool
+        - collectd
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  when: (ansible_facts['distribution'] == "Ubuntu")
+- name: Install collectd
+  apt: 
+    name:
+        - rrdtool
+        - collectd
+        - collectd-rrdtool
+        - collectd-sensors
+    state: present
+  when: (ansible_facts['distribution'] == "CentOS")
+- name: Copy template hosts file
+  template: src="collectd.conf.template" dest="/etc/collectd/collectd.conf" 
+- name: Copy my_types.db
+  copy:
+    src: etc/collectd/my_types.db
+    dest: /etc/collectd/my_types.db
+- name: Copy GPU monitor script
+  copy:
+    src: opt/xml-collectd-nvidia.pl
+    dest: /opt/xml-collectd-nvidia.pl
+    mode: 0755
+- name: Install dependencies for GPU monitor script
+  apt:
+    name:
+        - libxml-libxml-perl
+        - libxml-simple-perl
+        - libswitch-perl
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  when: (ansible_facts['distribution'] == "Ubuntu")
+- name: Restart collectd service
+  service:
+    name: collectd
+    state: restarted
