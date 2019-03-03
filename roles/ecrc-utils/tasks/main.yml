@@ -1,0 +1,43 @@
+---
+# tasks file for ecrc-utils
+- name: Ensure Build environment is installed
+  apt:
+    state: present
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - bwm-ng
+      - cscope
+      - cython
+      - gnuplot
+      - graphviz
+      - htop
+      - mercurial
+      - subversion
+      - sysstat
+      - tree
+      - unzip
+      - vite
+      - xterm
+      - zip
+      
+  when: (ansible_facts['distribution'] == "Ubuntu")
+- name: Ensure Build environment is installed
+  yum:
+    state: present
+    update_cache: no
+    name:
+      - bwm-ng
+      - cscope
+      - Cython
+      - gnuplot
+      - graphviz
+      - htop
+      - mercurial
+      - subversion
+      - sysstat
+      - tree
+      - unzip
+      - xterm
+      - zip
+  when: (ansible_facts['distribution'] == "CentOS")
