@@ -33,7 +33,7 @@
 - name: Ensure Build environment is installed
   yum:
     state: present
-    update_cache: yes
+    update_cache: no
     name:
       - "@Development Tools"
       - automake
@@ -44,6 +44,7 @@
       - cmake
       - doxygen
       - environment-modules
+      - epel-release
       - flex
       - git
       - gitk
