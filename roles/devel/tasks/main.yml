@@ -6,6 +6,9 @@
     update_cache: yes
     cache_valid_time: 3600
     name:
+      - autoconf
+      - automake
+      - binutils-dev
       - bison
       - build-essential
       - cmake
@@ -13,13 +16,18 @@
       - environment-modules
       - flex
       - gfortran
+      - git
+      - gitk
+      - libboost-dev
       - libcurl4-openssl-dev
       - libhwloc-dev
       - liblzma-dev
       - libnuma-dev
       - libtool-bin
       - libxml2-dev
+      - llvm-dev
       - numactl
+      - pkg-config
       - valgrind
   when: (ansible_facts['distribution'] == "Ubuntu")
 - name: Ensure Build environment is installed
@@ -28,17 +36,25 @@
     update_cache: yes
     name:
       - "@Development Tools"
+      - automake
+      - autoconf
+      - binutils-devel
       - bison
+      - boost-devel
       - cmake
       - doxygen
       - environment-modules
       - flex
+      - git
+      - gitk
       - hwloc-devel
       - libcurl-devel
       - libtool
       - libxml2-devel
+      - llvm-devel
       - numactl-devel
       - openssl-devel
+      - pkgconfig
       - valgrind
       - xz-devel
   when: (ansible_facts['distribution'] == "CentOS")
