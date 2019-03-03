@@ -103,3 +103,8 @@ ansible_user=ubuntu
 [demo]
 10.254.145.187
 10.254.145.188
+
+
+[tariq]
+red  ansible_user=ecrc
+blue ansible_user=ecrc
