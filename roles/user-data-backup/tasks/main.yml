@@ -1,0 +1,19 @@
+---
+# tasks file for user-data-backup
+- name: Copy /opt/noor-backup-folder.sh
+  copy:
+    src: noor-backup-folder.sh
+    dest: /opt/
+    mode: 0755
+- name: Copy /opt/noor-backup-everyone.sh
+  copy:
+    src: noor-backup-everyone.sh
+    dest: /root/
+    mode: 0755
+
+- name: Create cron job
+  cron:
+    name: backup everyone
+    user: root
+    job: "/root/noor-backup-everyone.sh 2>&1 > /root/noor-backup-everyone.sh.log"
+    special_time: weekly
