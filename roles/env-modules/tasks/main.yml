@@ -10,7 +10,7 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  when: (ansible_facts['distribution'] == "Ubuntu")
+  when: (ansible_facts['os_family'] == "Debian")
 - name: Ensure NFS, AutoFS, and Environment modules are installed
   yum:
     name:
@@ -19,7 +19,7 @@
       - environment-modules
     state: present
     update_cache: yes
-  when: (ansible_facts['distribution'] == "CentOS")
+  when: (ansible_facts['os_family'] == "RedHat")
 - name: Copying a CLEAN auto.master
   copy:
     src: etc/auto.master

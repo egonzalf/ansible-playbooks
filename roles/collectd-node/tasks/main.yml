@@ -8,7 +8,7 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  when: (ansible_facts['distribution'] == "Ubuntu")
+  when: (ansible_facts['os_family'] == "Debian")
 - name: Install collectd
   apt: 
     name:
@@ -17,7 +17,7 @@
         - collectd-rrdtool
         - collectd-sensors
     state: present
-  when: (ansible_facts['distribution'] == "CentOS")
+  when: (ansible_facts['os_family'] == "RedHat")
 - name: Copy template hosts file
   template: src="collectd.conf.template" dest="/etc/collectd/collectd.conf" 
 - name: Copy my_types.db
@@ -38,7 +38,7 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  when: (ansible_facts['distribution'] == "Ubuntu")
+  when: (ansible_facts['os_family'] == "Debian")
 - name: Restart collectd service
   service:
     name: collectd

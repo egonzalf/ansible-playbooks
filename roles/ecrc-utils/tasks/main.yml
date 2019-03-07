@@ -20,8 +20,7 @@
       - vite
       - xterm
       - zip
-      
-  when: (ansible_facts['distribution'] == "Ubuntu")
+  when: (ansible_facts['os_family'] == "Debian")
 - name: Ensure Build environment is installed
   yum:
     state: present
@@ -40,4 +39,4 @@
       - unzip
       - xterm
       - zip
-  when: (ansible_facts['distribution'] == "CentOS")
+  when: (ansible_facts['os_family'] == "RedHat")
