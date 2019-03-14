@@ -19,6 +19,7 @@
       - git
       - gitk
       - libboost-dev
+      - libc6-dev
       - libcurl4-openssl-dev
       - libhwloc-dev
       - liblzma-dev
@@ -48,6 +49,7 @@
       - flex
       - git
       - gitk
+      - glibc-devel
       - hwloc-devel
       - libcurl-devel
       - libtool
