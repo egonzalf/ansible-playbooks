@@ -11,7 +11,7 @@ thana
 vulture
 
 [ecrc:vars]
-ansible_user=gonzalea
+ansible_user=ecrc
 
 [ubuntu]
 almaha
@@ -23,12 +23,12 @@ shihab
 vulture
 
 [ubuntu:vars]
-ansible_user=gonzalea
+ansible_user=ecrc
 
 [centos]
-condor ansible_user=gonzalea
-thana ansible_user=gonzalea
-albatross ansible_user=gonzalea
+condor ansible_user=ecrc
+thana ansible_user=ecrc
+albatross ansible_user=ecrc
 
 [intel:children]
 sandybridge
@@ -39,28 +39,28 @@ knl
 skylake
 
 [sandybridge]
-almaha ansible_user=gonzalea
-raed ansible_user=gonzalea
+almaha ansible_user=ecrc
+raed ansible_user=ecrc
 
 [haswell]
-shihab ansible_user=gonzalea
+shihab ansible_user=ecrc
 
 [broadwell]
-jasmine ansible_user=gonzalea
+jasmine ansible_user=ecrc
 
 [ivybridge]
-buraq ansible_user=gonzalea
+buraq ansible_user=ecrc
 
 [power8]
-thana ansible_user=gonzalea
+thana ansible_user=ecrc
 
 [knl]
-albatross ansible_user=gonzalea
-condor ansible_user=gonzalea
+albatross ansible_user=ecrc
+condor ansible_user=ecrc
 
 [skylake]
-flamingo ansible_user=gonzalea
-vulture ansible_user=gonzalea
+flamingo ansible_user=ecrc
+vulture ansible_user=ecrc
 
 [ostack-ubuntu]
 10.254.145.75
