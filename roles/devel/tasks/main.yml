@@ -61,3 +61,11 @@
       - valgrind
       - xz-devel
   when: (ansible_facts['os_family'] == "RedHat")
+
+- name: Install some extra packages
+  apt:
+    state: latest
+    update_cache: no
+    name:
+      - liblapacke-dev
+  when: (ansible_facts['os_family'] == "Debian")
