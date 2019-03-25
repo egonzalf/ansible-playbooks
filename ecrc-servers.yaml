@@ -1,0 +1,13 @@
+- hosts: ecrc
+  become: yes
+
+  roles:
+    - devel
+    - ecrc-utils
+    - user-data-backup
+
+- hosts: intel
+  become: yes
+
+  roles:
+    - env-modules
