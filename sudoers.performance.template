@@ -1,2 +1,2 @@
 User_Alias PERFORMANCEUSERS = farhanma, ltaiefh, sukkarde, gonzalea, akbudak, alonaza, abdullsm, mikhala
-PERFORMANCEUSERS {{ ansible_hostname }}=/sbin/shutdown, /opt/cpu-frequency.sh, /opt/hyperthreading.sh
+PERFORMANCEUSERS {{ ansible_hostname }}=/sbin/shutdown, /sbin/reboot, /opt/cpu-frequency.sh, /opt/hyperthreading.sh
