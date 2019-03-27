@@ -12,6 +12,7 @@
       - bison
       - build-essential
       - cmake
+      - cscope
       - doxygen
       - environment-modules
       - flex
@@ -27,8 +28,11 @@
       - libtool-bin
       - libxml2-dev
       - llvm-dev
+      - mercurial
       - numactl
       - pkg-config
+      - python-dev
+      - subversion
       - valgrind
   when: (ansible_facts['os_family'] == "Debian")
 - name: Ensure Build environment is installed
@@ -58,6 +62,7 @@
       - numactl-devel
       - openssl-devel
       - pkgconfig
+      - subversion
       - valgrind
       - xz-devel
   when: (ansible_facts['os_family'] == "RedHat")
@@ -67,5 +72,38 @@
     state: latest
     update_cache: no
     name:
-      - liblapacke-dev
+        - liblapacke-dev
+        - bwm-ng
+        - chrony
+        - curl
+        - cython
+        - dkms
+        - fonts-inconsolata
+        - gnuplot
+        - graphviz
+        - htop
+        - hwloc
+        - iotop
+        - iperf
+        - ipmitool
+        - krb5-config
+        - libelf-dev
+        - libgmpv4-dev
+        - libpam-krb5
+        - libreadline-dev
+        - linux-tools-generic
+        - nmap
+        - rsync
+        - screen
+        - sshfs
+        - stress
+        - sysstat
+        - tcl-dev
+        - traceroute
+        - tree
+        - tshark
+        - valkyrie
+        - vite
+        - wget
+        - zip
   when: (ansible_facts['os_family'] == "Debian")
