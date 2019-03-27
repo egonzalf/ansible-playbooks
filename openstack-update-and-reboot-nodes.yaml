@@ -1,7 +1,6 @@
 ---
 - hosts: openstack
   become: yes
-  become_user: root
 
   tasks:
     - name: APT autoremove
@@ -18,3 +17,5 @@
       when: (ansible_facts['distribution'] == "CentOS")
     - name: Reboot
       reboot:
+        msg: "Rebooting after system package upgrade performed by Ansible."
+        reboot_timeout: 180
