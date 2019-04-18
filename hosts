@@ -41,40 +41,40 @@ knl
 skylake
 
 [sandybridge]
-almaha ansible_user=ecrc
-raed ansible_user=ecrc
+almaha
+raed
 
 [haswell]
-shihab ansible_user=ecrc
+shihab
 
 [broadwell]
-jasmine ansible_user=ecrc
+jasmine
 
 [ivybridge]
-buraq ansible_user=ecrc
+buraq
 
 [power8]
-thana ansible_user=ecrc
+thana
 
 [knl]
-albatross ansible_user=ecrc
-condor ansible_user=ecrc
+albatross
+condor
 
 [skylake]
-flamingo ansible_user=ecrc
-vulture ansible_user=ecrc
+flamingo
+vulture
 
 [ibm:children]
 power8
 
 [power8]
-thana ansible_user=ecrc
+thana
 
 [amd:children]
 epyc
 
 [epyc]
-tuwaiq ansible_user=ecrc
+tuwaiq
 
 [ostack-ubuntu]
 10.254.145.75
