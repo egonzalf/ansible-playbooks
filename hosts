@@ -126,3 +126,14 @@ ansible_user=ubuntu
 [tariq]
 red  ansible_user=ecrc
 blue ansible_user=ecrc
+
+[nvidia]
+almaha gpu_model="titan,k20"
+buraq gpu_model="k40"
+jasmine gpu_model="k80"
+raed gpu_model="titan,k20"
+shihab gpu_model="titan"
+vulture gpu_model="v100"
+
+[gpu:children]
+nvidia
