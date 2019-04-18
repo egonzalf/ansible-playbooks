@@ -5,8 +5,9 @@
     - devel
     - ecrc-utils
     - user-data-backup
+    - collectd-node
 
-- hosts: intel
+- hosts: intel, amd
   become: yes
 
   roles:
