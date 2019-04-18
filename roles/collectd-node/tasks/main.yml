@@ -29,6 +29,13 @@
     src: opt/xml-collectd-nvidia.pl
     dest: /opt/xml-collectd-nvidia.pl
     mode: 0755
+  when: gpu_model is defined
+- name: Copy collectd configuration for GPU monitor script
+  copy:
+    src: etc/collectd/collectd.conf.d/exec-nvidia.conf
+    dest: /etc/collectd/collectd.conf.d/exec-nvidia.conf
+    mode: 0644
+  when: gpu_model is defined
 - name: Install dependencies for GPU monitor script
   apt:
     name:
@@ -38,7 +45,7 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  when: (ansible_facts['os_family'] == "Debian")
+  when: ansible_facts['os_family'] == "Debian" and gpu_model is defined
 - name: Restart collectd service
   service:
     name: collectd
