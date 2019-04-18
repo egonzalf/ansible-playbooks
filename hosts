@@ -8,6 +8,7 @@ jasmine
 raed
 shihab
 thana
+tuwaiq
 vulture
 
 [ecrc:vars]
@@ -20,6 +21,7 @@ flamingo
 jasmine
 raed
 shihab
+tuwaiq
 vulture
 
 [ubuntu:vars]
@@ -67,6 +69,12 @@ power8
 
 [power8]
 thana ansible_user=ecrc
+
+[amd:children]
+epyc
+
+[epyc]
+tuwaiq ansible_user=ecrc
 
 [ostack-ubuntu]
 10.254.145.75
