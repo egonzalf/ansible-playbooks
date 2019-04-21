@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 MAXTHREADSPERCORE=12
 param=$1
 
@@ -12,8 +12,9 @@ _REALUSER_=$(logname)
 #set -x
 
 nsockets=`grep "^physical id" /proc/cpuinfo | sort | uniq | wc -l`
-ncorepersocket=`grep "^core id" /proc/cpuinfo | sort  | uniq | wc -l`
-nthreads=`egrep "processor|physical id|cpu cores" /proc/cpuinfo | awk '{if( $1 == "processor" ) n=n+1; if($1=="physical" && a!=$4) a=$4; if( $1 == "cpu" ) c=$4} END {a=a+1;nt=n/(a*c);print nt}'`
+#ncorepersocket=`grep "^core id" /proc/cpuinfo | sort  | uniq | wc -l`
+ncorepersocket=`grep -m 1 "cpu core" /proc/cpuinfo | awk '{print $4}'`
+nthreads=`egrep "processor|physical id|cpu cores" /proc/cpuinfo | awk '{if( $1 == "processor" ) n=n+1; if($1=="physical" && a!=$4) a=$4; if( $1 == "cpu" ) c=$4} END {a=a+1;nt=n/(a*c);print int(nt)}'`
 
 if [ $nthreads -eq 1 ]; then nthreads=$MAXTHREADSPERCORE; fi
 
@@ -32,7 +33,7 @@ done
 
 case $param in 
         "enable") 
-                echo "Enabling Cores $first_thread to $last_thread" 
+                echo "Enabling Cores $first_thread to $last_thread"
                 for n in `seq $first_thread $last_thread`; do echo 1 > /sys/devices/system/cpu/cpu$n/online ;done
         ;; 
         "disable")
