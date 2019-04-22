@@ -2,7 +2,7 @@
 # tasks file for ecrc-utils
 - name: Ensure Build environment is installed
   apt:
-    state: present
+    state: latest
     update_cache: yes
     cache_valid_time: 86400
     name:

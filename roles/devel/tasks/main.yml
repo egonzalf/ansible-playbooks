@@ -2,7 +2,7 @@
 # tasks file for devel
 - name: Ensure Build environment is installed
   apt:
-    state: present
+    state: latest
     update_cache: yes
     cache_valid_time: 3600
     name:
@@ -37,7 +37,7 @@
   when: (ansible_facts['os_family'] == "Debian")
 - name: Ensure Build environment is installed
   yum:
-    state: present
+    state: latest
     update_cache: no
     name:
       - "@Development Tools"
