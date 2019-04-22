@@ -5,21 +5,31 @@
     name:
         - rrdtool
         - collectd
-    state: present
+    state: latest
     update_cache: yes
     cache_valid_time: 3600
   when: (ansible_facts['os_family'] == "Debian")
 - name: Install collectd
-  apt: 
+  yum:
     name:
         - rrdtool
         - collectd
         - collectd-rrdtool
         - collectd-sensors
-    state: present
+    state: latest
   when: (ansible_facts['os_family'] == "RedHat")
-- name: Copy template hosts file
-  template: src="collectd.conf.template" dest="/etc/collectd/collectd.conf" 
+- name: Create configurations directory -> /etc/collectd/collectd.conf.d for RedHat
+  file:
+    dest: /etc/collectd/collectd.conf.d
+    src: /etc/collectd.d
+    state: link
+  when: (ansible_facts['os_family'] == "RedHat")
+- name: Copy template configuration file Debian
+  template: src="collectd.conf.template" dest="/etc/collectd/collectd.conf"
+  when: (ansible_facts['os_family'] == "Debian")
+- name: Copy template configuration file RedHat
+  template: src="collectd.conf.template" dest="/etc/collectd.conf"
+  when: (ansible_facts['os_family'] == "RedHat")
 - name: Copy my_types.db
   copy:
     src: etc/collectd/my_types.db
