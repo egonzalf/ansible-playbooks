@@ -73,15 +73,12 @@
     update_cache: no
     name:
         - liblapacke-dev
-        - bwm-ng
-        - chrony
         - curl
         - cython
         - dkms
         - fonts-inconsolata
         - gnuplot
         - graphviz
-        - htop
         - hwloc
         - iotop
         - iperf
@@ -92,18 +89,11 @@
         - libpam-krb5
         - libreadline-dev
         - linux-tools-generic
-        - nmap
         - rsync
         - screen
         - sshfs
         - stress
         - sysstat
         - tcl-dev
-        - traceroute
-        - tree
-        - tshark
         - valkyrie
-        - vite
-        - wget
-        - zip
   when: (ansible_facts['os_family'] == "Debian")

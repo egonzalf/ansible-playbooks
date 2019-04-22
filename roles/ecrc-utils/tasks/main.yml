@@ -14,11 +14,15 @@
       - graphviz
       - htop
       - mercurial
+      - nmap
       - subversion
       - sysstat
+      - traceroute
       - tree
+      - tshark
       - unzip
       - vite
+      - wget
       - xterm
       - zip
   when: (ansible_facts['os_family'] == "Debian")
