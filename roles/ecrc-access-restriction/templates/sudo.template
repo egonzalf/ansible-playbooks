@@ -1,0 +1,3 @@
+User_Alias SUDOUSERS = {{ privileged_users|join(', ') }}
+SUDOUSERS {{ ansible_hostname }}=(ALL:ALL) ALL
+

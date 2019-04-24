@@ -1,0 +1,14 @@
+---
+# tasks file for ecrc-access-restriction
+- name: Copt access.conf
+  template:
+    src: access.conf.template
+    dest: /etc/security/access.conf
+    mode: 0644
+
+- name: Allow users to run full sudo
+  template:
+    src: sudo.template
+    dest: /etc/sudoers.d/sudo
+    validate: 'visudo -cf %s'
+    mode: 0440
