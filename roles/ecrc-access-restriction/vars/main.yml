@@ -6,17 +6,27 @@ privileged_users:
   - a-gonzalea
 access_users:
   - (rc-ecrc)
-  - gonzalea
-  - ltaiefh
+  - abdelkr
   - abdullsm
-  - farhanma
   - akbudak
   - alonaza
-  - dalcin
-  - gaol
-  - omairyrm
-  - keyesde
-  - peterdb
+  - boukarw
   - caninim
+  - dalcin
+  - doucetn
+  - farhanma
+  - gaol
+  - gonzalea
+  - hongy
+  - hongy0a
+  - keyesde
+  - liy0h
+  - ltaiefh
+  - mikhala
+  - omairyrm
+  - peterdb
+  - reynani
+  - sukkarde
+  - x_doucetn
+  - x_etiennv
   - zampins
-  - abdelkr
