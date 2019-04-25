@@ -7,7 +7,6 @@
     cache_valid_time: 86400
     name:
       - bwm-ng
-      - chrony
       - cscope
       - cython
       - gnuplot
@@ -32,7 +31,6 @@
     update_cache: no
     name:
       - bwm-ng
-      - chrony
       - cscope
       - Cython
       - gnuplot

@@ -1,0 +1,22 @@
+---
+# vars file for ecrc-access-restriction
+privileged_users:
+  - gonzalea
+  - ltaiefh
+  - a-gonzalea
+access_users:
+  - (rc-ecrc)
+  - gonzalea
+  - ltaiefh
+  - abdullsm
+  - farhanma
+  - akbudak
+  - alonaza
+  - dalcin
+  - gaol
+  - omairyrm
+  - keyesde
+  - peterdb
+  - caninim
+  - zampins
+  - abdelkr

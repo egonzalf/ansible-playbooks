@@ -1,0 +1,3 @@
+[submodule "it-roles"]
+	path = roles/IT
+	url = https://gitlab.kaust.edu.sa/kaust-rc/workstations

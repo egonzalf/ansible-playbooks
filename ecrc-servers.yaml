@@ -1,6 +1,10 @@
+- hosts: ubuntu
+  become: yes
+  roles:
+    - ecrc-access-restriction
+
 - hosts: ecrc
   become: yes
-
   roles:
     - devel
     - ecrc-utils
