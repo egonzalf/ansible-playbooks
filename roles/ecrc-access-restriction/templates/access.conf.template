@@ -3,16 +3,20 @@
 + : root : cron crond
 # root access
 + : root : 127.0.0.1 :0 tty1 tty2 tty3 tty4 tty5 tty6
+
+# ALWAYS ALLOW
 + : ecrc : ALL
 + : a-gonzalea : ALL
-+ : (rc-ecrc) : ALL
-
-
-## Users
 + : jenkins : ALL
 
-#+ : userid : ALL
+# FORBIDDEN ACCESS
+{% for username in forbidden_users %}
+- : {{ username }} : ALL
+{% endfor %}
 
+
+# Allow the rest of the users.
+#+ : userid : ALL
 {% for username in privileged_users %}
 + : {{ username }} : ALL
 {% endfor %}

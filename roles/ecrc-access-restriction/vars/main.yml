@@ -4,6 +4,9 @@ privileged_users:
   - gonzalea
   - ltaiefh
   - a-gonzalea
+
+# List of users who should be granted access
+# (rc-ecrc) is an IT defined linux group.
 access_users:
   - (rc-ecrc)
   - abdelkr
@@ -30,3 +33,8 @@ access_users:
   - x_doucetn
   - x_etiennv
   - zampins
+
+# List of users who are NOT ALLOWED to login to ecrc machines
+forbidden_users:
+  - username1
+  - username2
