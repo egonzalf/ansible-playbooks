@@ -1,0 +1,40 @@
+---
+# tasks file for env-modules
+- name: Ensure NFS, AutoFS, and Environment modules are installed
+  apt:
+    name:
+      - nfs-common
+      - autofs
+      - tcl
+      - environment-modules
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  when: (ansible_facts['os_family'] == "Debian")
+- name: Ensure NFS, AutoFS, and Environment modules are installed
+  yum:
+    name:
+      - nfs-utils
+      - autofs
+      - environment-modules
+    state: present
+    update_cache: yes
+  when: (ansible_facts['os_family'] == "RedHat")
+- name: Copying a CLEAN auto.master
+  copy:
+    src: etc/auto.master
+    dest: /etc/
+- name: Copying opt-ecrc.mount
+  copy:
+    src: etc/auto.master.d/opt-ecrc.mount
+    dest: /etc/auto.master.d/
+- name: Copying opt-ecrc.autofs
+  copy:
+    src: etc/auto.master.d/opt-ecrc.autofs
+    dest: /etc/auto.master.d/
+- name: Copying modules-ecrc.sh
+  copy:
+    src: etc/profile.d/modules-ecrc.sh
+    dest: /etc/profile.d
+    mode: 644
+
