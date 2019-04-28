@@ -134,6 +134,11 @@ jasmine gpu_model="k80"
 raed gpu_model="titan,k20"
 shihab gpu_model="titan"
 vulture gpu_model="v100"
+p100 gpu_model="p100"
 
 [gpu:children]
 nvidia
+
+
+[remote-servers]
+p100 ansible_user=ecrc
