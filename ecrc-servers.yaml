@@ -14,6 +14,13 @@
 
 - hosts: intel, amd
   become: yes
-
   roles:
+    - env-modules
+
+- hosts: p100
+  become: yes
+  roles:
+    - devel
+    - collectd-node
+    - ecrc-motd
     - env-modules
