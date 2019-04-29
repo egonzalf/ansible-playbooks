@@ -3,7 +3,7 @@
   roles:
     - ecrc-access-restriction
 
-- hosts: ecrc
+- hosts: ecrc, p100
   become: yes
   roles:
     - devel
@@ -12,15 +12,7 @@
     - collectd-node
     - ecrc-motd
 
-- hosts: intel, amd
+- hosts: intel, amd, p100
   become: yes
   roles:
-    - env-modules
-
-- hosts: p100
-  become: yes
-  roles:
-    - devel
-    - collectd-node
-    - ecrc-motd
     - env-modules
