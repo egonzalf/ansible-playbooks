@@ -1,0 +1,6 @@
+- Checkout ECRC servers system graphs!
+  - http://10.254.99.65:12003/browse/
+
+- This is a shared resource. Communicate and coordinate with other users:
+  - Commands: write | wall
+  - Ryver app: https://kaustecrc.ryver.com/

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#[ -f /etc/update-motd.d/ecrcmodules.txt ] && cat /etc/update-motd.d/ecrcmodules.txt
+
+ruta="/etc/update-motd.d/"
+
+# Define SEPARATOR
+ncols=`tput cols 2> /dev/null`
+COLS=${ncols:-80}
+i=0; sep="";
+while [ "$i" -lt $COLS ]; do
+        sep="#$sep";
+        i=$((i+1));
+done 
+
+
+
+# Print files
+for i in $ruta/*txt; 
+do
+	echo "$sep";
+	cat $i
+	echo "";
+done; 

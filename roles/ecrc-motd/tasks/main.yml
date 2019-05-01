@@ -1,0 +1,28 @@
+---
+# tasks file for ecrc-motd
+- name: Install figlet
+  apt:
+    update_cache: no
+    state: present
+    name: figlet
+  when: (ansible_facts['os_family'] == "Debian")
+
+- name: Install figlet
+  yum:
+    update_cache: no
+    state: present
+    name: figlet
+  when: (ansible_facts['os_family'] == "RedHat")
+
+- name: welcome user banner
+  copy:
+    src: etc/profile.d/welcomename.sh
+    dest: /etc/profile.d/welcomename.sh
+    mode: 0755
+
+- name: Copying MOTD file
+  copy:
+    src: etc/update-motd.d/
+    dest: /etc/update-motd.d/
+    mode: preserve
+  when: (ansible_facts['os_family'] == "Debian")
