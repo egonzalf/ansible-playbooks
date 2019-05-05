@@ -16,4 +16,6 @@
     name: backup everyone
     user: root
     job: "/root/noor-backup-everyone.sh 2>&1 > /root/noor-backup-everyone.sh.log"
-    special_time: weekly
+    minute: "57"
+    hour: "22"
+    weekday: "1,5"
