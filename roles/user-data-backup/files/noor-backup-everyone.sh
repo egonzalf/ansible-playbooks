@@ -58,6 +58,9 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 		continue
 	fi
 
+	# create remote directory, just in case
+	ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no gonzalea@$DSTHOST "mkdir -p $remotepath/$username"
+
 	# ionice to avoid stressing the system (best-effort)
 	# use delete-delay because is more efficient than delete-after
 	ionice -c 2 -n 6 -t rsync -e 'ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0"' -az -vv --exclude-from=$excludelist --delete-delay --delete-excluded --max-size=$MAXSIZE $userdir/ gonzalea@$DSTHOST:$remotepath/$username || continue;
