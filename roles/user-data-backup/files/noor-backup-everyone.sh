@@ -45,7 +45,7 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	last=`lastlog -u $username -t 180` # did she/he connect in last 180 days
 	if [ "a$last" == "a" ]; then
 		# no 
-		echo "User has not connected in last 180 days"
+		echo "User [$username] has not connected in last 180 days"
 		continue
 	fi
 
@@ -54,10 +54,11 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	# This indicates that a personal back must be working.No need for this
 	if sudo -u $username ssh -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DSTHOST ls /rcsdata/ecrc/$username/$hostname 1>&2 2>/dev/null
 	then
-		echo "User $username must be doing backup."
+		echo "User [$username] must be doing backup."
 		continue
 	fi
 
+	echo "Backing up User [$username]."
 	# create remote directory, just in case
 	ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no gonzalea@$DSTHOST "mkdir -p $remotepath/$username"
 
