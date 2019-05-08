@@ -16,6 +16,6 @@
     name: backup everyone
     user: root
     job: "/root/noor-backup-everyone.sh 2>&1 > /root/noor-backup-everyone.sh.log"
-    minute: "57"
-    hour: "22"
+    minute: "{{ 59 | random(seed=inventory_hostname) }}"
+    hour: "{{ 8 | random(seed=inventory_hostname) }}"
     weekday: "1,5"
