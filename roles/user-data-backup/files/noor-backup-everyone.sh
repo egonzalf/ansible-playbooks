@@ -6,7 +6,7 @@
 ## This is meant to be run as root
 ##############################################################################
 
-MAXSIZE="500m"
+MAXSIZE="1.2G"
 # get the local machine name
 hostname=$(hostname -s)
 
