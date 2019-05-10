@@ -23,6 +23,7 @@ cat > $excludelist << EOF
 *.pyo
 #*.pyc
 # Asuming user is doing backup on his/her own.
+.ssh/
 /noor-backup/
 EOF
 
