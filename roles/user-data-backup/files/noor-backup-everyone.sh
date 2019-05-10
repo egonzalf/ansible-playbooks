@@ -7,6 +7,7 @@
 ##############################################################################
 
 MAXSIZE="1.2G"
+DELETE_ARG=''
 # get the local machine name
 hostname=$(hostname -s)
 
@@ -47,7 +48,8 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	if [ "a$last" == "a" ]; then
 		# no 
 		echo "User [$username] has not connected in last 180 days"
-		continue
+		# we could try: rsync --delete
+		DELETE_ARG='--delete-delay'
 	fi
 
 
@@ -65,7 +67,7 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 
 	# ionice to avoid stressing the system (best-effort)
 	# use delete-delay because is more efficient than delete-after
-	ionice -c 2 -n 6 -t rsync -e 'ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -az -vv --exclude-from=$excludelist --delete-delay --delete-excluded --max-size=$MAXSIZE $userdir/ gonzalea@$DSTHOST:$remotepath/$username || continue;
+	ionice -c 2 -n 6 -t rsync -e 'ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -az -vv --exclude-from=$excludelist ${DELETE_ARG} --delete-excluded --max-size=$MAXSIZE $userdir/ gonzalea@$DSTHOST:$remotepath/$username || continue;
 
 	sleep 5
 done
