@@ -41,6 +41,7 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	id=$(id -u $username 2>/dev/null )
 	[ -n "$id" ] && [ $id -gt 100000 ] || continue;
 
+	DELETE_ARG=''
 	#TODO: backup only recent files
 	#find /path/to/dir -mtime -366 > /tmp/rsyncfiles # files younger than 1 year
 	#rsync -Ravh --files-from=/tmp/rsyncfiles / root@www.someserver.com:/root/backup
@@ -50,7 +51,8 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 		# no 
 		echo "User [$username] has not connected in last ${idledays} days"
 		# we could try: rsync --delete
-		DELETE_ARG='--delete-delay'
+		# use delete-delay because is more efficient than delete-after
+		DELETE_ARG='--delete-delay --delete-excluded'
 	fi
 
 
@@ -67,8 +69,7 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no gonzalea@$DSTHOST "mkdir -p $remotepath/$username"
 
 	# ionice to avoid stressing the system (best-effort)
-	# use delete-delay because is more efficient than delete-after
-	ionice -c 2 -n 6 -t rsync -e 'ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -az -vv --exclude-from=$excludelist ${DELETE_ARG} --delete-excluded --max-size=$MAXSIZE $userdir/ gonzalea@$DSTHOST:$remotepath/$username || continue;
+	ionice -c 2 -n 6 -t rsync -e 'ssh -i /home/gonzalea/.ssh/id_rsa -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -az -vv --exclude-from=$excludelist ${DELETE_ARG} --max-size=$MAXSIZE $userdir/ gonzalea@$DSTHOST:$remotepath/$username || continue;
 
 	sleep 5
 done
