@@ -60,7 +60,7 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	# This indicates that a personal back must be working.No need for this
 	if sudo -u $username ssh -o "NumberOfPasswordPrompts 0" -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DSTHOST ls /rcsdata/ecrc/$username/$hostname 1>&2 2>/dev/null
 	then
-		echo "User [$username] must be doing backup."
+		echo "User [$username] must be doing backup. Skipping"
 		continue
 	fi
 
