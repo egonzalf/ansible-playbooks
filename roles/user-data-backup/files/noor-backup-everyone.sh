@@ -10,6 +10,7 @@ MAXSIZE="1.2G"
 DELETE_ARG=''
 # get the local machine name
 hostname=$(hostname -s)
+idledays=90
 
 # Exclude pattern for rsync
 excludelist=/tmp/.noor-exclude.list
@@ -44,10 +45,10 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	#find /path/to/dir -mtime -366 > /tmp/rsyncfiles # files younger than 1 year
 	#rsync -Ravh --files-from=/tmp/rsyncfiles / root@www.someserver.com:/root/backup
 
-	last=`lastlog -u $username -t 180` # did she/he connect in last 180 days
+	last=`lastlog -u $username -t ${idledays}` # did she/he connect in last 180 days
 	if [ "a$last" == "a" ]; then
 		# no 
-		echo "User [$username] has not connected in last 180 days"
+		echo "User [$username] has not connected in last ${idledays} days"
 		# we could try: rsync --delete
 		DELETE_ARG='--delete-delay'
 	fi
