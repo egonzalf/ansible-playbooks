@@ -6,11 +6,9 @@
 ## This is meant to be run as root
 ##############################################################################
 
-MAXSIZE="1.2G"
-DELETE_ARG=''
 # get the local machine name
 hostname=$(hostname -s)
-idledays=90
+idledays=180
 
 # Exclude pattern for rsync
 excludelist=/tmp/.noor-exclude.list
@@ -42,6 +40,7 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 	[ -n "$id" ] && [ $id -gt 100000 ] || continue;
 
 	DELETE_ARG=''
+	MAXSIZE='1.2G'
 	#TODO: backup only recent files
 	#find /path/to/dir -mtime -366 > /tmp/rsyncfiles # files younger than 1 year
 	#rsync -Ravh --files-from=/tmp/rsyncfiles / root@www.someserver.com:/root/backup
@@ -53,6 +52,7 @@ for userdir in `find /home/ -maxdepth 1 -type d `; do
 		# we could try: rsync --delete
 		# use delete-delay because is more efficient than delete-after
 		DELETE_ARG='--delete-delay --delete-excluded'
+		MAXSIZE='256M'
 	fi
 
 
