@@ -63,4 +63,9 @@
     src: etc/profile.d/modules-ecrc.sh
     dest: /etc/profile.d
     mode: 644
-
+- name: ECRC_DISTRO for EL7
+  replace:
+    path: /etc/profile.d/modules-ecrc.sh
+    regexp: "ub16"
+    replace: "el7"
+  when: (ansible_facts['os_family'] == "RedHat")
