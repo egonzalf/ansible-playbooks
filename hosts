@@ -76,7 +76,7 @@ epyc
 [epyc]
 tuwaiq
 
-[ostack-ubuntu]
+[ostack_ubuntu]
 10.254.145.75
 10.254.145.83
 10.254.145.47
@@ -87,28 +87,30 @@ tuwaiq
 10.254.145.109
 10.254.145.187
 10.254.145.188
+10.254.145.141
 
-[ostack-ubuntu:vars]
+
+[ostack_ubuntu:vars]
 ansible_user=ubuntu
 
-#[ostack-centos]
+#[ostack_centos]
 #10.254.145.62
-
-[ostack-centos:vars]
-ansible_user=centos
+#
+#[ostack_centos:vars]
+#ansible_user=centos
 
 [openstack:children]
-ostack-ubuntu
-ostack-centos
+ostack_ubuntu
 demo
+#ostack_centos
 
-[ostack-jenkins]
+[ostack_jenkins]
 10.254.145.75
 10.254.145.47
 10.254.145.80
 10.254.145.72
 
-[ostack-jenkins:vars]
+[ostack_jenkins:vars]
 ansible_user=ubuntu
 
 [dummy]
@@ -140,5 +142,26 @@ p100 gpu_model="p100"
 nvidia
 
 
-[remote-servers]
+[remote_servers]
 p100 ansible_user=ecrc
+
+[BDC]
+jasmine
+tuwaiq
+raed
+almaha
+vulture
+thana
+red
+blue
+
+[datacenter_server:children]
+remote_servers
+BDC
+
+[L0_workstations]
+shihab
+buraq
+flamingo
+condor
+albatross
