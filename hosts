@@ -88,6 +88,7 @@ tuwaiq
 10.254.145.187
 10.254.145.188
 10.254.145.141
+10.254.145.140
 
 
 [ostack_ubuntu:vars]
@@ -165,3 +166,6 @@ buraq
 flamingo
 condor
 albatross
+
+[monitoring]
+10.254.145.140
