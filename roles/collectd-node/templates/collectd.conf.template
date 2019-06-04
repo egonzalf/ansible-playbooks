@@ -374,6 +374,13 @@ LoadPlugin write_graphite
 	FSType tmpfs
 	FSType fusectl
 	FSType cgroup
+    FSType overlay
+    FSType debugfs
+    FSType pstore
+    FSType securityfs
+    FSType hugetlbfs
+    FSType squashfs
+    FSType mqueue
 	FSType nfs 
 	IgnoreSelected true
 
@@ -381,15 +388,14 @@ LoadPlugin write_graphite
 #	ReportReserved false
 #	ReportInodes false
 
-#	ValuesAbsolute true
-#	ValuesPercentage false
+	ValuesAbsolute true
+	ValuesPercentage true
 </Plugin>
 
-#<Plugin disk>
-#	Disk "hda"
-#	Disk "/sda[23]/"
-#	IgnoreSelected false
-#</Plugin>
+<Plugin "disk">
+  Disk "/^[hs]d[a-z]/"
+  IgnoreSelected false
+</Plugin>
 
 #<Plugin dns>
 #	Interface "eth0"
@@ -449,10 +455,12 @@ LoadPlugin write_graphite
 #	Port 7634
 #</Plugin>
 
-#<Plugin interface>
-#	Interface "eth0"
-#	IgnoreSelected false
-#</Plugin>
+<Plugin interface>
+  Interface "lo"
+  Interface "/^veth.*/"
+  Interface "/^docker.*/"
+  IgnoreSelected true
+</Plugin>
 
 #<Plugin ipmi>
 #	Sensor "some_sensor"
