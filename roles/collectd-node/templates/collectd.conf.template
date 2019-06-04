@@ -71,7 +71,7 @@ LoadPlugin syslog
 # Specify what features to activate.                                         #
 ##############################################################################
 
-#LoadPlugin aggregation
+LoadPlugin aggregation
 #LoadPlugin amqp
 #LoadPlugin apache
 #LoadPlugin apcups
@@ -156,14 +156,14 @@ LoadPlugin swap
 #LoadPlugin thermal
 #LoadPlugin tokyotyrant
 #LoadPlugin unixsock
-#LoadPlugin uptime
+LoadPlugin uptime
 LoadPlugin users
 #LoadPlugin uuid
 #LoadPlugin varnish
 #LoadPlugin vmem
 #LoadPlugin vserver
 #LoadPlugin wireless
-#LoadPlugin write_graphite
+LoadPlugin write_graphite
 #LoadPlugin write_http
 #LoadPlugin write_riemann
 
@@ -174,28 +174,15 @@ LoadPlugin users
 # ription of those options is available in the collectd.conf(5) manual page. #
 ##############################################################################
 
-#<Plugin "aggregation">
-#	<Aggregation>
-#		#Host "unspecified"
-#		Plugin "cpu"
-#		PluginInstance "/[0,2,4,6,8]$/"
-#		Type "cpu"
-#		#TypeInstance "unspecified"
-#
-#		SetPlugin "cpu"
-#		SetPluginInstance "even-%{aggregation}"
-#
-#		GroupBy "Host"
-#		GroupBy "TypeInstance"
-#
-#		CalculateNum false
-#		CalculateSum false
-#		CalculateAverage true
-#		CalculateMinimum false
-#		CalculateMaximum false
-#		CalculateStddev false
-#	</Aggregation>
-#</Plugin>
+<Plugin "aggregation">
+  <Aggregation>
+    Plugin "cpu"
+    Type "cpu"
+    GroupBy "Host"
+    GroupBy "TypeInstance"
+    CalculateAverage true
+  </Aggregation>
+</Plugin>
 
 #<Plugin amqp>
 #	<Publish "name">
@@ -1057,19 +1044,19 @@ LoadPlugin users
 #	Verbose false
 #</Plugin>
 
-#<Plugin write_graphite>
-#	<Node "example">
-#		Host "localhost"
-#		Port "2003"
-#		Protocol "udp"
+<Plugin write_graphite>
+	<Node "openstack-graphite">
+		Host "10.254.145.140"
+		Port "3389"
+		Protocol "tcp"
 #		LogSendErrors true
-#		Prefix "collectd"
+		Prefix "collectd."
 #		Postfix "collectd"
 #		StoreRates true
 #		AlwaysAppendDS false
 #		EscapeCharacter "_"
-#	</Node>
-#</Plugin>
+	</Node>
+</Plugin>
 
 #<Plugin write_http>
 #	<URL "http://example.com/collectd-post">
