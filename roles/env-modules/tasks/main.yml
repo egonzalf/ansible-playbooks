@@ -24,6 +24,18 @@
   copy:
     src: etc/auto.master
     dest: /etc/
+- name: Delete old files
+  file:
+    path: /etc/auto.master.d/opt-share.mount
+    state: absent
+- name: Delete old files
+  file:
+    path: /etc/auto.master.d/opt-share.autofs
+    state: absent
+- name: Delete old files
+  file:
+    path: /etc/profile.d/modules-it.sh
+    state: absent
 - name: Copying opt-ecrc.mount
   copy:
     src: etc/auto.master.d/opt-ecrc.mount
@@ -31,14 +43,6 @@
 - name: Copying opt-ecrc.autofs
   copy:
     src: etc/auto.master.d/opt-ecrc.autofs
-    dest: /etc/auto.master.d/
-- name: Copying opt-share.mount
-  copy:
-    src: etc/auto.master.d/opt-share.mount
-    dest: /etc/auto.master.d/
-- name: Copying opt-share.autofs
-  copy:
-    src: etc/auto.master.d/opt-share.autofs
     dest: /etc/auto.master.d/
 - name: Copying sw.mount
   copy:
@@ -49,10 +53,6 @@
     src: etc/auto.master.d/sw.autofs
     dest: /etc/auto.master.d/
   notify: "restart autofs"
-- name: Delete old files
-  file:
-    path: /etc/profile.d/modules-it.sh
-    state: absent
 - name: Copying modules-it-sw.sh
   copy:
     src: etc/profile.d/modules-it-sw.sh
