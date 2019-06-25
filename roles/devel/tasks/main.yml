@@ -95,3 +95,11 @@
         - tcl-dev
         - valkyrie
   when: (ansible_facts['os_family'] == "Debian")
+- name: install gpu related packages
+  apt:
+    state: latest
+    update_cache: no
+    name:
+        - libgles2-mesa-dev
+        - libglfw3-dev
+  when: gpu_model is defined
