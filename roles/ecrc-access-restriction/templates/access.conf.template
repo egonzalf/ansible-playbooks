@@ -2,7 +2,7 @@
 #CRON
 + : root : cron crond
 # root access
-+ : root : 127.0.0.1 :0 tty1 tty2 tty3 tty4 tty5 tty6
++ : root : 127.0.0.1 :0 tty1 tty2 tty3 tty4 tty5 tty6 10.68.58.49
 
 # ALWAYS ALLOW
 + : ecrc : ALL
