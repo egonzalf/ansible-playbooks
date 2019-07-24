@@ -27,7 +27,7 @@ cat > $excludelist << EOF
 /noor-backup/
 EOF
 
-DSTHOST="dm.kaust.edu.sa"
+DSTHOST="dm02.kaust.edu.sa"
 remotepath="/datawaha/ecrc/gonzalea/ALLECRC/$hostname"
 
 # lower priority
