@@ -8,14 +8,17 @@
       when: (ansible_facts['distribution'] == "Ubuntu")
     - name: APT safe upgrade
       apt: update_cache=yes cache_valid_time=3600 upgrade=safe
+      register: aptresult
       when: (ansible_facts['distribution'] == "Ubuntu")
     - name: YUM autoremove
       yum: autoremove=yes
       when: (ansible_facts['distribution'] == "CentOS")
     - name: YUM upgrade
       yum: update_cache=yes name='*' state=latest
+      register: yumresult
       when: (ansible_facts['distribution'] == "CentOS")
     - name: Reboot
       reboot:
         msg: "Rebooting after system package upgrade performed by Ansible."
         reboot_timeout: 180
+      when: aptresult.changed or yumresult.changed
