@@ -100,6 +100,7 @@
     state: latest
     update_cache: no
     name:
+        - freeglut3-dev
         - libgles2-mesa-dev
         - libglfw3-dev
         - mesa-utils
