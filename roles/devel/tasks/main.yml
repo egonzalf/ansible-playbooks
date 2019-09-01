@@ -102,4 +102,5 @@
     name:
         - libgles2-mesa-dev
         - libglfw3-dev
+        - mesa-utils
   when: gpu_model is defined
