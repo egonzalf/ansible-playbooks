@@ -19,3 +19,9 @@
         dest: /opt/
         backup: true
         mode: 0755
+    - name: Copy scripts numa-balancing.sh
+      copy:
+        src: numa-balancing.sh
+        dest: /opt/
+        backup: true
+        mode: 0755
