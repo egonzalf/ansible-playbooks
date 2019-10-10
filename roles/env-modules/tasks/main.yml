@@ -68,6 +68,7 @@
     path: /etc/profile.d/modules-ecrc.sh
     regexp: "ub16"
     replace: "el7"
+  when: (ansible_facts['os_family'] == "RedHat")
 - name: ECRC_ARCHITECTURE
   replace:
     path: /etc/profile.d/modules-ecrc.sh
