@@ -1,0 +1,40 @@
+#!/bin/sh
+
+
+nthreads=`lscpu | grep "^Thread" | cut -d: -f 2 | tr -d " "`
+
+#nsockets=`lscpu | grep "^Socket" | cut -d: -f 2 | tr -d " "`
+nsockets=`grep "^physical id" /proc/cpuinfo | sort | uniq | wc -l`
+
+#ncorepersocket=`lscpu | grep "^Core" | cut -d: -f 2 | tr -d " "`
+#ncorepersocket=`grep "^core id" /proc/cpuinfo | sort  | uniq | wc -l`
+ncorepersocket=`grep 'cpu cores' /proc/cpuinfo | sort |head -1| cut -f 3 -d ' '`
+
+#totalcpu=`seq $(lscpu | grep "On-line CPU" | cut -d: -f 2 |tr "-" " ") | wc -l` # total ONLINE cpus (that can be used)
+totalcpu=`grep "^processor" /proc/cpuinfo | wc -l` # total ONLINE cpus
+
+cputhreads=$(( nthreads * nsockets * ncorepersocket ))
+cpucores=$(( nsockets * ncorepersocket ))
+
+
+# Assume HyperThreading is enabled
+TXTHT="ENABLED"
+if [ "$nthreads" = "1" -a "$totalcpu" = "$cputhreads" ]; then TXTHT=DISABLED; fi
+
+# text separator
+ncols=`tput cols 2> /dev/null`
+COLS=${ncols:-80}
+i=0; sep="";
+while [ "$i" -lt $COLS ]; do
+        sep="#$sep";
+        i=$((i+1));
+done
+
+# display text
+echo "$sep"
+echo "   This machine has HyperThreading $TXTHT"
+echo "   It has $nsockets sockets and $ncorepersocket cores per socket"
+echo "    *** TOTAL = $totalcpu CPU THREADS. ***"
+echo "    *** TOTAL = $cpucores CPU CORES. ***"
+echo ""
+

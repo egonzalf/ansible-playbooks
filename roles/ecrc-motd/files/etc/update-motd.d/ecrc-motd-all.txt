@@ -1,5 +1,5 @@
 - Checkout ECRC servers system graphs!
-  - http://10.254.99.65:12003/browse/
+  - http://10.254.145.140/d/7DX2SbGWk/main-dashboard
 
 - This is a shared resource. Communicate and coordinate with other users:
   - Commands: write | wall
