@@ -28,10 +28,12 @@
   file:
     path: /etc/auto.master.d/opt-share.mount
     state: absent
+  notify: "restart autofs"
 - name: Delete old files
   file:
     path: /etc/auto.master.d/opt-share.autofs
     state: absent
+  notify: "restart autofs"
 - name: Delete old files
   file:
     path: /etc/profile.d/modules-it.sh
@@ -40,14 +42,17 @@
   copy:
     src: etc/auto.master.d/opt-ecrc.mount
     dest: /etc/auto.master.d/
+  notify: "restart autofs"
 - name: Copying opt-ecrc.autofs
   copy:
     src: etc/auto.master.d/opt-ecrc.autofs
     dest: /etc/auto.master.d/
+  notify: "restart autofs"
 - name: Copying sw.mount
   copy:
     src: etc/auto.master.d/sw.mount
     dest: /etc/auto.master.d/
+  notify: "restart autofs"
 - name: Copying sw.autofs
   copy:
     src: etc/auto.master.d/sw.autofs
