@@ -23,28 +23,27 @@
     dest: /etc/collectd/collectd.conf.d
     src: /etc/collectd.d
     state: link
+  notify: "restart collectd"
   when: (ansible_facts['os_family'] == "RedHat")
 - name: Copy template configuration file Debian
   template: src="collectd.conf.template" dest="/etc/collectd/collectd.conf"
+  notify: "restart collectd"
   when: (ansible_facts['os_family'] == "Debian")
 - name: Copy template configuration file RedHat
   template: src="collectd.conf.template" dest="/etc/collectd.conf"
+  notify: "restart collectd"
   when: (ansible_facts['os_family'] == "RedHat")
 - name: Copy my_types.db
   copy:
     src: etc/collectd/my_types.db
     dest: /etc/collectd/my_types.db
+  notify: "restart collectd"
 - name: Copy GPU monitor script
   copy:
     src: opt/xml-collectd-nvidia.pl
     dest: /opt/xml-collectd-nvidia.pl
     mode: 0755
-  when: gpu_model is defined
-- name: Copy collectd configuration for GPU monitor script
-  copy:
-    src: etc/collectd/collectd.conf.d/exec-nvidia.conf
-    dest: /etc/collectd/collectd.conf.d/exec-nvidia.conf
-    mode: 0644
+  notify: "restart collectd"
   when: gpu_model is defined
 - name: Install dependencies for GPU monitor script
   apt:
@@ -56,7 +55,10 @@
     update_cache: yes
     cache_valid_time: 3600
   when: ansible_facts['os_family'] == "Debian" and gpu_model is defined
-- name: Restart collectd service
-  service:
-    name: collectd
-    state: restarted
+- name: Copy collectd configuration for GPU monitor script
+  copy:
+    src: etc/collectd/collectd.conf.d/exec-nvidia.conf
+    dest: /etc/collectd/collectd.conf.d/exec-nvidia.conf
+    mode: 0644
+  notify: "restart collectd"
+  when: gpu_model is defined

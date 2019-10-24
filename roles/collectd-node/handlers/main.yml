@@ -1,2 +1,8 @@
 ---
 # handlers file for collectd-node
+- name: Restart and enable service collectd
+  systemd:
+    state: restarted
+    enabled: true
+    name: collectd
+  listen: "restart collectd"
