@@ -16,3 +16,21 @@
   become: yes
   roles:
     - env-modules
+
+- hosts: ubuntu
+  become: yes
+  tasks:
+    - name: copy rsyslog
+      copy:
+        src:  rsyslog.logrotate
+        dest: /etc/logrotate.d/rsyslog
+        mode: 0644
+
+- hosts: ecrc, p100
+  become: yes
+  tasks:
+    - name: copy jenkins limits
+      copy:
+        src:  jenkins.limit.conf
+        dest: /etc/security/limits.d/jenkins.conf
+        mode: 0644
