@@ -17,6 +17,9 @@
       yum: update_cache=yes name='*' state=latest
       register: yumresult
       when: (ansible_facts['distribution'] == "CentOS")
+    - name: Wait for system to be unused
+      shell: while test `cut -f 1 -d . /proc/loadavg` -gt 0; do sleep 13; done;
+      changed_when: false
     - name: Reboot
       reboot:
         msg: "Rebooting after system package upgrade performed by Ansible."
