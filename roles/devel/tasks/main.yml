@@ -56,6 +56,8 @@
       - glibc-devel
       - hwloc-devel
       - libcurl-devel
+      - libglpk-dev
+      - libgmp-dev
       - libtool
       - libxml2-devel
       - llvm-devel
@@ -85,6 +87,7 @@
         - ipmitool
         - libelf-dev
         - libgmpv4-dev
+        - libpciaccess-dev
         - libreadline-dev
         - linux-tools-generic
         - rsync
@@ -106,6 +109,7 @@
       - graphviz
       - iotop
       - ipmitool
+      - libpciaccess-devel
       - rsync
       - screen
       - sysstat
