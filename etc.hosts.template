@@ -30,7 +30,7 @@ ff02::2 ip6-allrouters
 10.66.89.208    p100
 10.254.5.25     lthnoorapps lthnoorapps.kaust.edu.sa
 10.68.58.49     kw14944 collectd-master
-10.254.99.65    ecrcwiki lthecrcwiki.kaust.edu.sa ecrcwiki.kaust.edu.sa
+10.127.4.97     ecrcwiki.kaust.edu.sa wiki ecrcwiki
 
 # OpenStack
 10.254.145.75   jenkins-gpu-1
