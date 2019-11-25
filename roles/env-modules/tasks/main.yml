@@ -62,12 +62,12 @@
   copy:
     src: etc/profile.d/modules-it-sw.sh
     dest: /etc/profile.d
-    mode: 644
+    mode: 0644
 - name: Copying modules-ecrc.sh
   copy:
     src: etc/profile.d/modules-ecrc.sh
     dest: /etc/profile.d
-    mode: 644
+    mode: 0644
 - name: ECRC_DISTRO for EL7
   replace:
     path: /etc/profile.d/modules-ecrc.sh

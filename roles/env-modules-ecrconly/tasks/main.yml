@@ -36,5 +36,5 @@
   copy:
     src: etc/profile.d/modules-ecrc.sh
     dest: /etc/profile.d
-    mode: 644
+    mode: 0644
 
